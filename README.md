@@ -4,7 +4,7 @@ Simple command line interface for [cider](http://github.com/tbarron-xyz/cider). 
 #Usage
 `./cider-cli -port 1234 -url google.com` will attempt to connect to a cider instance running at `google.com:1234`. The default port is `6969` (the default port for cider) and the default url is localhost.
 
-`cider cli
+```cider cli
 Connecting... Connected.
 > SET key value
 < {
@@ -15,4 +15,4 @@ Connecting... Connected.
 < {
     "response": "value",
     "status": "success"
-}`
+}```
