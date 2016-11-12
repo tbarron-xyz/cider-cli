@@ -2,16 +2,16 @@ package main
 
 import (
 	"bufio"
-	"os"
 	"fmt"
-	"strings"
 	"github.com/gorilla/websocket"
+	"os"
+	"strings"
 )
 
 var Txtm = websocket.TextMessage
 var reader = bufio.NewReader(os.Stdin)
 
-func readOnce (ws *websocket.Conn) (err error) {
+func readOnce(ws *websocket.Conn) (err error) {
 	var msg []byte
 	_, msg, err = ws.ReadMessage()
 	if err != nil {
@@ -22,7 +22,7 @@ func readOnce (ws *websocket.Conn) (err error) {
 	return
 }
 
-func main () {
+func main() {
 	fmt.Println("cider cli")
 	fmt.Print("Connecting... ")
 	ws, _, err := websocket.DefaultDialer.Dial(fmt.Sprintf("ws://%s:%d/", *_url, *_port), nil)
@@ -34,13 +34,13 @@ func main () {
 	for {
 		fmt.Print("> ")
 		var input []byte
-    	input, _ = reader.ReadBytes('\n')
-    	err = ws.WriteMessage(Txtm, []byte(strings.TrimSpace(string(input))))
-    	if err != nil {
-    		fmt.Println("Write error: " + err.Error())
-    		ws.Close()
-    		break
-    	}
-    	readOnce(ws)
+		input, _ = reader.ReadBytes('\n')
+		err = ws.WriteMessage(Txtm, []byte(strings.TrimSpace(string(input))))
+		if err != nil {
+			fmt.Println("Write error: " + err.Error())
+			ws.Close()
+			break
+		}
+		readOnce(ws)
 	}
 }
