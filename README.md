@@ -17,4 +17,9 @@ Connecting... Connected.
     "response": "value",
     "status": "success"
 }
+> NOTAVALIDCOMMAND keyname value
+< {
+    "error": "Invalid command NOTAVALIDCOMMAND",
+    "status": "error"
+}
 ```
