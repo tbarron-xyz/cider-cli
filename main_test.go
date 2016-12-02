@@ -11,7 +11,7 @@ import (
 	"testing"
 )
 
-var _clients = flag.Int("c", 50, "Number of concurrent clients")
+var _clients = flag.Int("C", 50, "Number of concurrent clients")
 var clients int
 var _pipeline = flag.Int("P", 64, "Number of requests to pipeline")
 var pipeline int
@@ -116,4 +116,5 @@ func init() {
 	flag.Parse()
 	clients = *_clients
 	pipeline = *_pipeline
+	fmt.Printf("clients: %v\npipeline: %v\n", clients, pipeline)
 }
